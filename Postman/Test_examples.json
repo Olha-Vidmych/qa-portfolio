@@ -1,0 +1,24 @@
+Test 1
+
+pm.test("Succesful POST request", function(){
+    pm.expect(pm.response.code).to.be.oneOf([201, 202]);
+
+});
+
+pm.collectionVariables.set('chatId', pm.response.json().initialBotMessage.chatId);
+
+
+Test 2
+
+pm.test("Successful POST request", function () {
+    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);
+});
+
+pm.test("League name matches to requested", function () {
+    pm.expect(jsonData.value).to.include(pm.collectionVariables.get('leagueName'));
+});
+
+pm.test("League successfully created", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.value).to.include("created");
+});
